@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-ink-900 font-sans antialiased;
+  }
+  .dark body {
+    @apply bg-ink-950 text-ink-100;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-brand-700 active:scale-95 disabled:opacity-50;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-200 px-6 py-3 text-sm font-semibold text-ink-900 transition-all hover:border-ink-900 hover:bg-ink-900 hover:text-white active:scale-95;
+  }
+  .dark .btn-outline {
+    @apply border-ink-700 text-ink-100 hover:border-ink-200 hover:bg-ink-200 hover:text-ink-900;
+  }
+  .container-px {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .skeleton {
+    @apply relative overflow-hidden bg-ink-100;
+  }
+  .dark .skeleton {
+    @apply bg-ink-800;
+  }
+  .skeleton::after {
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent;
+    content: '';
+    animation: shimmer 1.5s infinite;
+  }
+  .dark .skeleton::after {
+    @apply via-white/10;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* range slider styling */
+input[type='range'] {
+  @apply h-1.5 cursor-pointer appearance-none rounded-full bg-ink-200;
+}
+.dark input[type='range'] {
+  @apply bg-ink-700;
+}
+input[type='range']::-webkit-slider-thumb {
+  @apply h-4 w-4 appearance-none rounded-full border-2 border-brand-600 bg-white shadow;
+}
+input[type='range']::-moz-range-thumb {
+  @apply h-4 w-4 rounded-full border-2 border-brand-600 bg-white shadow;
+}
